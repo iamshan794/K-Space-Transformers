@@ -96,7 +96,7 @@ parser.add_argument('--gpu', type=str, default='0,1,2,3')
 
 # ----------------- Learning Rate, Loss and Regularizations
 
-parser.add_argument('--epoch_num', type=int, default=200)
+parser.add_argument('--epoch_num', type=int, default=100)
 
 parser.add_argument('--seed', type=int, default=42)
 
@@ -113,9 +113,9 @@ parser.add_argument('--hr_weights', nargs='+', type=float,
                     default=[0.3, 0.3, 0.3, 0.3, 0.3, 1.0])
 parser.add_argument('--conv_weight', type=float, default=1.0,
                     help='Loss weight for image refinement module')
-parser.add_argument('--pure_LR_training_epoch', nargs='+', type=int, default=50,
+parser.add_argument('--pure_LR_training_epoch', nargs='+', type=int, default=25,
                     help='Training epoch for LR decoder only')
-parser.add_argument('--pure_K_training_epoch', nargs='+', type=int, default=100,
+parser.add_argument('--pure_K_training_epoch', nargs='+', type=int, default=50,
                     help='Training epoch for k-space LR+HR decoder before image RM, must be large than pure_LR_training_epoch')
 
 parser.add_argument('--l2norm', type=float, default=0.0)
