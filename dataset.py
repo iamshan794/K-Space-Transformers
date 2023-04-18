@@ -23,7 +23,7 @@ class TrainDataSet(Dataset):
     self.w = self.k_gt.shape[2]
 
   def __len__(self):
-    return self.image_num-50
+    return self.image_num-100
 
   def __getitem__(self, index):
 
@@ -172,7 +172,7 @@ class ValidDataSet(Dataset):
 
   def __len__(self):
 
-    return self.image_num
+    return self.image_num-20
 
   def __getitem__(self, index):
 
