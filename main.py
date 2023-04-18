@@ -126,9 +126,9 @@ parser.add_argument('--reassign_mask', type=int, default=1, help='Reassign under
 
 parser.add_argument('--d_model', type=int, default=256)
 parser.add_argument('--n_head', type=int, default=4)
-parser.add_argument('--num_encoder_layers', type=int, default=2)
-parser.add_argument('--num_LRdecoder_layers', type=int, default=2)
-parser.add_argument('--num_HRdecoder_layers', type=int, default=3)
+parser.add_argument('--num_encoder_layers', type=int, default=1)
+parser.add_argument('--num_LRdecoder_layers', type=int, default=1)
+parser.add_argument('--num_HRdecoder_layers', type=int, default=2)
 parser.add_argument('--dim_feedforward', type=int, default=1024)
 
 parser.add_argument('--hr_conv_channel', type=int, default=64)
