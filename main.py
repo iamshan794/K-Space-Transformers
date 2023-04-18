@@ -128,7 +128,7 @@ parser.add_argument('--d_model', type=int, default=256)
 parser.add_argument('--n_head', type=int, default=4)
 parser.add_argument('--num_encoder_layers', type=int, default=4)
 parser.add_argument('--num_LRdecoder_layers', type=int, default=4)
-parser.add_argument('--num_HRdecoder_layers', type=int, default=6)
+parser.add_argument('--num_HRdecoder_layers', type=int, default=3)
 parser.add_argument('--dim_feedforward', type=int, default=1024)
 
 parser.add_argument('--hr_conv_channel', type=int, default=64)
@@ -137,8 +137,8 @@ parser.add_argument('--hr_kernel_size', type=int, default=3)
 
 # ----------------- Dataset
 
-parser.add_argument('--batch_size', type=int, default=4)
-parser.add_argument('--valid_batch_size', type=int, default=16)
+parser.add_argument('--batch_size', type=int, default=2)
+parser.add_argument('--valid_batch_size', type=int, default=1)
 
 parser.add_argument('--lr_size', type=int, default=64, help='Resolution of LR decoder reconstruction')
 
@@ -168,11 +168,11 @@ def data_loader():
     print('Start Loading Dataset from %s, \nMask from %s' % (config.train_hr_data_path, config.train_mask_path))
     t1 = time.time()
     trainSet = TrainDataSet(train_path, train_lr_path, train_mask_path)
-    trainLoader = DataLoader(trainSet, batch_size=config.batch_size, shuffle=True, num_workers=4)
+    trainLoader = DataLoader(trainSet, batch_size=config.batch_size, shuffle=True, num_workers=2)
     print('Train data num : %d' % len(trainSet))
     # val和valid用的是同一个mask
     validSet = ValidDataSet(valid_path, valid_lr_path, valid_mask_path)
-    validLoader = DataLoader(validSet, batch_size=config.valid_batch_size, shuffle=True, num_workers=2)
+    validLoader = DataLoader(validSet, batch_size=config.valid_batch_size, shuffle=True, num_workers=1)
     print('valid data num : %d ' % len(validSet))
     print('Sampled Ratio: %.4f ' % (trainSet.sampled_num/trainSet.unsampled_num))
     print('Dataset load time : %d \n' % (time.time() - t1))
